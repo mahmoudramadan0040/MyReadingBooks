@@ -3,7 +3,6 @@ import React from 'react';
 import * as BookApi from '../../BooksAPI';
 
 const ShelfComponent = ({book,setBooks,Books}) => {
-    // console.log(setBooks);
     const HandleShelf =async (event)=>{
         let newShelf = event.target.value;
         // check if book is found in props or not 
