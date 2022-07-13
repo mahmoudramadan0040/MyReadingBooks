@@ -7,8 +7,11 @@ import * as BookApI from '../../BooksAPI';
 import { useEffect,useState} from 'react';
 const HomeComponent = () => {
     const [Books,setBooks]= useState([]);
-    useEffect( async() => {
-        setBooks(await BookApI.getAll());
+    useEffect(() => {
+        async function FetchData(){
+            setBooks(await BookApI.getAll());
+        }
+        FetchData();
     },[]);
     console.log(Books);
    return (  
