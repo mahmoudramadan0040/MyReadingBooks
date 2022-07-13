@@ -6,11 +6,24 @@ const ShelfComponent = ({book,setBooks,Books}) => {
     // console.log(setBooks);
     const HandleShelf =async (event)=>{
         let newShelf = event.target.value;
-        if(book.shelf !== newShelf){
+        // check if book is found in props or not 
+        console.log(Books);
+        console.log(book);
+        let bookFound = Books.find(books => books.id === book.id);
+        console.log(bookFound);
+        // update books shelf if the book is found in state home 
+        if(bookFound){
+            if(book.shelf !== newShelf){
+                book.shelf = newShelf;
+                // here i update state with new value of shelf 
+                setBooks(Books => [...Books,book.shelf]);
+                // here i update api with new value of shelf
+                await BookApi.update(book,newShelf);
+            }
+        // push new book to state home books
+        }else{
             book.shelf = newShelf;
-            // here i update state with new value of shelf 
-            setBooks(Books => [...Books,book.shelf]);
-            // here i update api with new value of shelf
+            setBooks(Books => [...Books,book]);
             await BookApi.update(book,newShelf);
         }
     }

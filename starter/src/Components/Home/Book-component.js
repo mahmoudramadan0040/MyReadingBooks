@@ -23,9 +23,9 @@ const BookComponent = ({book,setBooks,Books}) =>  {
                 </div>
                 <div className="book-title">{title}</div>
                 {
-                    authors.map((author,index) => { 
+                    authors ? authors.map((author,index) => { 
                         return <div className="book-authors" key={index}>{author}</div>
-                    })
+                    }):''
                 }
             </div>
         </li>

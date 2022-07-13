@@ -27,17 +27,23 @@ const HomeComponent = () => {
                 <div className="bookshelf">
                     <h2 className="bookshelf-title">Want to Read</h2>
                     <div className="bookshelf-books">
-                        <WantToReadComponent Books={Books} setBooks ={setBooks}/>
+                        <WantToReadComponent 
+                        Books={Books}
+                        setBooks ={setBooks}/>
                     </div>
                 </div>
                 <div className="bookshelf">
                     <h2 className="bookshelf-title">Read</h2>
                     <div className="bookshelf-books">
-                        <ReadComponent Books={Books} setBooks ={setBooks}/>
+                        <ReadComponent 
+                        Books={Books} 
+                        setBooks ={setBooks}/>
                     </div>
                 </div>
             </div>
-            <SearchBtnComponent/>
+            <SearchBtnComponent
+            
+            />
         </div>
        
     </div>
