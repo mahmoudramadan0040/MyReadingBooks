@@ -46,7 +46,7 @@ const SearchComponent = () => {
                     {
                         searchBooks.length ? searchBooks.map((book) => {
                             return <BookComponent key={book.id} book={book} Books={Books} setBooks={setBooks}/>
-                        }): <div>{msgFound}</div>
+                        }): <div><h2>{msgFound}</h2></div>
                     }
                 </ol>
             </div>
