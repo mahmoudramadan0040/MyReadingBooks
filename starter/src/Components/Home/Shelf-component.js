@@ -29,7 +29,7 @@ const ShelfComponent = ({book,setBooks,Books}) => {
     return ( 
         <div className="book-shelf-changer">
             <select onChange={HandleShelf} value={book.shelf ? book.shelf : "none" }>
-                <option value="none" disabled >
+                <option  disabled >
                 Move to...
                 </option>
                 <option value="currentlyReading">

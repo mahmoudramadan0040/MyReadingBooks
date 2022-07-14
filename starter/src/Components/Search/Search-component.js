@@ -23,20 +23,19 @@ const SearchComponent = () => {
                         console.log(books);
                         // filter books that in state from the search result
                     
-                        let BookFilterInHome = books.filter((book)=>{
+                        books.filter((book)=>{
                             return Books.find((b)=>{
                                     if(b.id===book.id){
                                         book.shelf=b.shelf;
                                         return b;
+                                    }else{
+                                        book.shelf='none'
+                                        return null;
                                     }
-                                    return null;
                                 });
                             })
                         // console.log(BookFilterInHome);
-                        // compine between the book with shelf and book without shelf yet 
-                        let result =[books,...BookFilterInHome];
-                        // console.log(result[0]);
-                        setSearchBooks(result[0]);
+                        setSearchBooks(books);
                     }else{
                         setMsgFound('No books found');
                         setSearchBooks([]);
@@ -48,7 +47,7 @@ const SearchComponent = () => {
                 // console.log(searchBooks)
                 setMsgFound('');
             }
-        }, 2000);
+        }, 1500);
         // search();
     }
     return ( 
