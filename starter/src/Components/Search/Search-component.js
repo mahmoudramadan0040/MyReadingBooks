@@ -16,7 +16,7 @@ const SearchComponent = () => {
     },[]);
     const handleSearch = (event) => {
         let query =event.target.value;
-        const search=setTimeout(() => {
+        setTimeout(() => {
             if(query){
                 BookApI.search(query).then((books)=>{
                     if(books.length){
@@ -29,6 +29,7 @@ const SearchComponent = () => {
                                         book.shelf=b.shelf;
                                         return b;
                                     }
+                                    return null;
                                 });
                             })
                         // console.log(BookFilterInHome);
@@ -48,7 +49,7 @@ const SearchComponent = () => {
                 setMsgFound('');
             }
         }, 2000);
-        
+        // search();
     }
     return ( 
         <div className="search-books">
