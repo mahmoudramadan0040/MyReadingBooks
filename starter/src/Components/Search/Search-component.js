@@ -16,36 +16,39 @@ const SearchComponent = () => {
     },[]);
     const handleSearch = (event) => {
         let query =event.target.value;
-        if(query){
-            BookApI.search(query).then((books)=>{
-                if(books.length){
-                    console.log(books);
-                    // filter books that in state from the search result
-                
-                    let BookFilterInHome = books.filter((book)=>{
-                        return Books.find((b)=>{
-                                if(b.id===book.id){
-                                    book.shelf=b.shelf;
-                                    return b;
-                                }
-                            });
-                        })
-                    console.log(BookFilterInHome);
-                    // compine between the book with shelf and book without shelf yet 
-                    let result =[books,...BookFilterInHome];
-                    console.log(result[0]);
-                    setSearchBooks(result[0]);
-                }else{
-                    setMsgFound('No books found');
-                    setSearchBooks([]);
-                }
-            });
-        }else{
-            console.log(searchBooks);
-            setSearchBooks([]);
-            console.log(searchBooks)
-            setMsgFound('');
-        }
+        const search=setTimeout(() => {
+            if(query){
+                BookApI.search(query).then((books)=>{
+                    if(books.length){
+                        console.log(books);
+                        // filter books that in state from the search result
+                    
+                        let BookFilterInHome = books.filter((book)=>{
+                            return Books.find((b)=>{
+                                    if(b.id===book.id){
+                                        book.shelf=b.shelf;
+                                        return b;
+                                    }
+                                });
+                            })
+                        // console.log(BookFilterInHome);
+                        // compine between the book with shelf and book without shelf yet 
+                        let result =[books,...BookFilterInHome];
+                        // console.log(result[0]);
+                        setSearchBooks(result[0]);
+                    }else{
+                        setMsgFound('No books found');
+                        setSearchBooks([]);
+                    }
+                });
+            }else{
+                // console.log(searchBooks);
+                setSearchBooks([]);
+                // console.log(searchBooks)
+                setMsgFound('');
+            }
+        }, 2000);
+        
     }
     return ( 
         <div className="search-books">
